@@ -24,7 +24,7 @@ int validate_row(int *matrix)
 	while(n < 4)
 	{
 		aux = matrix[n];
-		n2 = n+1
+		n2 = n+1;
 		while (n2 < 4){
 			if (aux == matrix[n2])
 				return 1;
@@ -51,6 +51,6 @@ int validate_colum(int *matrix)
 			invert[n] = matrix[n+n2*4];
 		}
 	} 
-	aux = validate_row(invert)
+	aux = validate_row(invert);
 	return aux;
 }
