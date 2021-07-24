@@ -6,12 +6,21 @@ int	main(int argc, char *argv[])
 	int	matrix[16];
 	int	views[16];
 	int	entry;
+	int end;
+	int ok;
 
+	end = 0;
 	entry = validate_entry(argv[1], views);
 	if (argc == 2 && entry == 0)
 	{
 		matrix_start(matrix);
-		print_matrix(matrix);
+		while (end == 0)
+		{
+			ok = validate_matrix(matrix);
+			if (ok == 0)
+				print_matrix(matrix);
+		}
+
 	}
 	else
 		write(1, "Error\n", 6);

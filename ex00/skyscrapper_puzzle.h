@@ -7,5 +7,6 @@ int		validate_entry(char *str, int *views);
 void	ft_putchar(char c);
 void	print_matrix(int *matrix);
 void	matrix_start(int *matrix);
+int 	next_matrix(int *matrix, int pos);
 
 #endif
