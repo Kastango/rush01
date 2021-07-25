@@ -6,7 +6,7 @@
 /*   By: arbernar <arbernar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 01:52:18 by arbernar          #+#    #+#             */
-/*   Updated: 2021/07/24 14:36:56 by arbernar         ###   ########.fr       */
+/*   Updated: 2021/07/25 21:11:59 by arbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	matrix_start(int *matrix)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (i < 16)
 	{
 		matrix[i] = 0;
