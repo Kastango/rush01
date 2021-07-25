@@ -1,6 +1,6 @@
 #include <unistd.h>
 #include <stdio.h>
-
+/*
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
@@ -53,7 +53,7 @@ int main(){
 	vector_construct(possibility[i], possibility[j], possibility[k], possibility[l], aux);
 	print_matrix(aux);
 
-	/*while(i < 24){
+	while(i < 24){
 		while(j < 24){
 			while(k < 24){
 				while(l < 24){
@@ -72,5 +72,6 @@ int main(){
 		}
 		j = i;
 		i++;
-	}*/
+	}
 }
+*/

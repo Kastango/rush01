@@ -26,7 +26,7 @@ void next_matrix(int *matrix, int pos,int *end)
 		end[0] = 1;
 
 } 
-
+/*
 int main (void) {
 	int matrix[16];
 	int end[0];
@@ -46,6 +46,7 @@ int main (void) {
 			printf("%i ", matrix[i]);
 		}
 		printf("\n");
+		
 		if(end[0] == 1)
 		{
 			printf(" (%i)\n", end[0]);
@@ -53,3 +54,4 @@ int main (void) {
 		}
 	}	
 }
+*/
