@@ -99,5 +99,3 @@ int	main(int argc, char *argv[])
 		write(1, "Error\n", 6);
 	return (0);
 }
-
-//comando para iniciar: ./a.out "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2"
