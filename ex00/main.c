@@ -6,7 +6,7 @@
 /*   By: arbernar <arbernar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 00:26:47 by gpacheco          #+#    #+#             */
-/*   Updated: 2021/07/26 00:29:52 by arbernar         ###   ########.fr       */
+/*   Updated: 2021/07/26 00:46:03 by arbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	start_vet(int *vetor)
 	vetor[3] = 0;
 }
 
-int	matrix_solver()
+int	matrix_solver(void)
 {
 	int	i[4];
 
@@ -94,14 +94,14 @@ int	main(int argc, char *argv[])
 {
 	int	matrix[16];
 	int	entry;
-	
+
 	if (argc == 2)
 	{
 		entry = validate_entry(argv[1], g_views);
 		if (entry == 0)
 		{
 			matrix_start(matrix);
-			if(matrix_solver())
+			if (matrix_solver())
 				write(1, "Error\n", 6);
 		}
 		else

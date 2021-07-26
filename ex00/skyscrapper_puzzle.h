@@ -18,6 +18,5 @@ int		validate_view(int *m, int *view);
 void	ft_putchar(char c);
 void	print_matrix(int *matrix);
 void	matrix_start(int *matrix);
-int 	next_matrix(int *matrix, int pos);
 
 #endif
