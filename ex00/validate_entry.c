@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stdio.h>
 #include "skyscrapper_puzzle.h"
 
 int	validate_entry(char *str, int *views)
@@ -20,5 +21,7 @@ int	validate_entry(char *str, int *views)
 				return (1);
 		i++;
 	}
+	if (j != 16 || str[i] != '\0')
+		return (1);
 	return (0);
 }

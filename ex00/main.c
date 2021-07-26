@@ -1,13 +1,24 @@
 #include <unistd.h>
 #include "skyscrapper_puzzle.h"
+#include <stdio.h>
 
-int * vector_construct(int *vet1, int *vet2, int *vet3, int *vet4)
+static int	g_views[16];
+
+static int	g_p[24][4] = {{4, 2, 3, 1}, {3, 1, 4, 2}, {3, 4, 2, 1},
+				{4, 1, 3, 2}, {1, 4, 2, 3}, {1, 2, 3, 4}, {4, 3, 1, 2},
+				{1, 3, 4, 2}, {2, 1, 3, 4}, {4, 1, 2, 3}, {1, 2, 4, 3},
+				{3, 4, 1, 2}, {1, 3, 2, 4}, {1, 4, 3, 2}, {4, 2, 1, 3},
+				{3, 2, 1, 4}, {2, 1, 4, 3}, {3, 1, 2, 4}, {2, 3, 1, 4},
+				{3, 2, 4, 1}, {2, 4, 1, 3}, {2, 3, 4, 1}, {4, 3, 2, 1},
+				{2, 4, 3, 1}};
+
+int	*vector_construct(int *vet1, int *vet2, int *vet3, int *vet4)
 {
-	int i;
-	static int res[16];
+	int			i;
+	static int	res[16];
 
 	i = 0;
-	while(i < 4)
+	while (i < 4)
 	{
 		res[i] = vet1[i];
 		res[i + 4] = vet2[i];
@@ -15,47 +26,55 @@ int * vector_construct(int *vet1, int *vet2, int *vet3, int *vet4)
 		res[i + 12] = vet4[i];
 		i++;
 	}
-	return res;
+	return (res);
 }
 
-int matrix_solver(int *matrix, int *viewz
+int	print_solution(int i, int j, int k, int l)
 {
-	int p[24][4] = {
-		{4,2,3,1},{3,1,4,2},{3,4,2,1},{4,1,3,2},{1,4,2,3},{1,2,3,4},{4,3,1,2},{1,3,4,2},
-		{2,1,3,4},{4,1,2,3},{1,2,4,3},{3,4,1,2},{1,3,2,4},{1,4,3,2},{4,2,1,3},{3,2,1,4},
-		{2,1,4,3},{3,1,2,4},{2,3,1,4},{3,2,4,1},{2,4,1,3},{2,3,4,1},{4,3,2,1},{2,4,3,1}};
-
-	int	i;
-	int	j;
-	int	k;
-	int	l;
 	int	*aux;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	l = 0;
-	while(i < 24){
-		while(j < 24){
-			while(k < 24){
-				while(l < 24){
-					aux = vector_construct(p[i], p[j], p[k], p[l]);
-					if(validate_column(aux)){
-						if(validate_view(aux, view)){
-							print_matrix(aux);
-							return (0);
-						}
-					}
-					l++;
+	aux = vector_construct(g_p[i], g_p[j], g_p[k], g_p[l]);
+	if (validate_column(aux) && validate_view(aux, g_views))
+	{
+		print_matrix(aux);
+		return (1);
+	}
+	return (0);
+}
+
+void	start_vet(int *vetor)
+{
+	vetor[0] = 0;
+	vetor[1] = 0;
+	vetor[2] = 0;
+	vetor[3] = 0;
+}
+
+int	matrix_solver()
+{
+	int	i[4];
+
+	start_vet(i);
+	while (i[0] < 24)
+	{
+		while (i[1] < 24)
+		{
+			while (i[2] < 24)
+			{
+				while (i[3] < 24)
+				{
+					if (print_solution(i[0], i[1], i[2], i[3]))
+						return (0);
+					i[3]++;
 				}
-				l = 0;
-				k++;
+				i[3] = 0;
+				i[2]++;
 			}
-			k = 0;
-			j++;
+			i[2] = 0;
+			i[1]++;
 		}
-		j = 0;
-		i++;
+		i[1] = 0;
+		i[0]++;
 	}
 	return (1);
 }
@@ -63,19 +82,22 @@ int matrix_solver(int *matrix, int *viewz
 int	main(int argc, char *argv[])
 {
 	int	matrix[16];
-	int	views[16];
 	int	entry;
 
-	entry = validate_entry(argv[1], views);
-	if (argc == 2 && entry == 0)
+	if (argc == 2)
 	{
-		matrix_start(matrix);
-		matrix_solver(matrix, views);
+		entry = validate_entry(argv[1], g_views);
+		if (entry == 0)
+		{
+			matrix_start(matrix);
+			matrix_solver();
+		}
+		else
+			write(1, "Error\n", 6);
 	}
 	else
 		write(1, "Error\n", 6);
-
-	return(0);
+	return (0);
 }
 
 //comando para iniciar: ./a.out "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2"
