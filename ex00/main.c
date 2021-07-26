@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpacheco <gpacheco@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: arbernar <arbernar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 00:26:47 by gpacheco          #+#    #+#             */
-/*   Updated: 2021/07/26 00:26:55 by gpacheco         ###   ########.fr       */
+/*   Updated: 2021/07/26 00:29:52 by arbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,15 @@ int	main(int argc, char *argv[])
 {
 	int	matrix[16];
 	int	entry;
-
+	
 	if (argc == 2)
 	{
 		entry = validate_entry(argv[1], g_views);
 		if (entry == 0)
 		{
 			matrix_start(matrix);
-			matrix_solver();
+			if(matrix_solver())
+				write(1, "Error\n", 6);
 		}
 		else
 			write(1, "Error\n", 6);
