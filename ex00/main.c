@@ -83,6 +83,8 @@ int	main(int argc, char *argv[])
 {
 	int	matrix[16];
 	int	entry;
+	int end;
+	int ok;
 
 	if (argc == 2)
 	{
