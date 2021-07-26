@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpacheco <gpacheco@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/26 00:26:47 by gpacheco          #+#    #+#             */
+/*   Updated: 2021/07/26 00:26:55 by gpacheco         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include "skyscrapper_puzzle.h"
-#include <stdio.h>
 
 static int	g_views[16];
 
@@ -83,8 +94,6 @@ int	main(int argc, char *argv[])
 {
 	int	matrix[16];
 	int	entry;
-	int end;
-	int ok;
 
 	if (argc == 2)
 	{
